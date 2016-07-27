@@ -9,6 +9,7 @@ sudo: false
 cache:
   directories:
     - node_modules
+    - node_modules/electron-prebuilt
 
 before_install:
   - npm config set spin false
@@ -22,6 +23,12 @@ install:
   - bower install
 
 script:
+  - ls -lah
+  - npm config list
+  - ls -lah $HOME/.npm/lib/node_modules/ /usr/local/share/npm/ /usr/local/share/npm/bin node_modules
+  - echo $PATH
+  - export PATH="$PATH:node_modules/ember-cli/bin"
+  - echo $PATH
   - npm --version
   - ember --version
   - npm run test-main
