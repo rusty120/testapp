@@ -28,4 +28,4 @@ script:
   - ember --version
   - npm run test-main
   - ember electron:test
-  - ember electron:package --platform --arch x64
+  - ember electron:package --platform darwin --arch x64
