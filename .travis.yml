@@ -3,6 +3,8 @@ language: node_js
 node_js:
   - "6"
 os: osx
+osx_image: xcode7.3
+
 
 sudo: false
 
@@ -13,24 +15,17 @@ cache:
 
 before_install:
   - npm config set spin false
-  - npm install -g npm@^3
   - npm install -g bower
   - npm install phantomjs-prebuilt
 
 install:
-  - npm install -g bower
   - npm install
   - bower install
 
 script:
-  - ls -lah
-  - npm config list
-  - ls -lah $HOME/.npm/lib/node_modules/ /usr/local/share/npm/ /usr/local/share/npm/bin node_modules
-  - echo $PATH
   - export PATH="$PATH:node_modules/ember-cli/bin"
-  - echo $PATH
   - npm --version
   - ember --version
   - npm run test-main
   - ember electron:test
-  - ember electron:package
+  - ember electron:package --platform --arch x64
