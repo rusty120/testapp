@@ -62,8 +62,8 @@
       "package.json"
     ],
     "name": null,
-    "platform": null,
-    "arch": null,
+    "platform": "win32,darwin",
+    "arch": "x64,ia32",
     "version": null,
     "app-bundle-id": null,
     "app-category-type": null,
