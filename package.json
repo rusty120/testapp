@@ -1,7 +1,7 @@
 {
-  "name": "TestApp",
+  "name": "dummy",
   "version": "0.0.0",
-  "description": "Small description for TestApp goes here",
+  "description": "Small description for dummy goes here",
   "private": true,
   "directories": {
     "doc": "doc",
