@@ -28,4 +28,7 @@ script:
   - ember --version
   - npm run test-main
   - ember electron:test
+
+deploy:
+  - script/prep_osx_keychain
   - ember electron:package --platform darwin --arch x64
