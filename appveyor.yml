@@ -25,8 +25,8 @@ build_script:
 
 after_build:
   - cd electron-builds
-  - 7z a dummy-win32-ia32.zip electron-builds\dummy-win32-ia32
-  - 7z a dummy-win32-x64.zip electron-builds\dummy-win32-x64
+  - 7z a dummy-win32-ia32.zip dummy-win32-ia32
+  - 7z a dummy-win32-x64.zip dummy-win32-x64
   - cd ..
   - ps: ls electron-builds
 
