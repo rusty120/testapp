@@ -81,7 +81,7 @@
     "ignore": null,
     "out": null,
     "osx-sign": {
-      "identity": null,
+      "identity": "Mac Developer: Russell Kinnicutt (X76QQD8538)",
       "entitlements": null,
       "entitlements-inherit": null
     },
