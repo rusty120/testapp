@@ -1,32 +1,35 @@
----
 language: node_js
 node_js:
-  - "6"
+- '6'
 os: osx
 osx_image: xcode7.3
-
-
 sudo: false
-
 cache:
   directories:
-    - node_modules
-    - node_modules/electron-prebuilt
-
+  - node_modules
+  - node_modules/electron-prebuilt
 before_install:
-  - npm config set spin false
-  - npm install -g bower
-  - npm install phantomjs-prebuilt
-
+- npm config set spin false
+- npm install -g bower
+- npm install phantomjs-prebuilt
 install:
-  - npm install
-  - bower install
-
+- npm install
+- bower install
 script:
-  - export PATH="$PATH:node_modules/ember-cli/bin"
-  - './script/prep-osx-keychain.sh'
-  - npm --version
-  - ember --version
-  - npm run test-main
-  - ember electron:test
-  - ember electron:package --platform darwin --arch x64
+- export PATH="$PATH:node_modules/ember-cli/bin"
+- "./script/prep-osx-keychain.sh"
+- npm --version
+- ember --version
+- npm run test-main
+- ember electron:test
+- ember electron:package --platform darwin --arch x64
+after_success:
+- tar -C electron-builds -czvf electron-builds/dummy-darwin-x64.tar.gz dummy-darwin-x64
+- ls -lah electron-builds
+deploy:
+  provider: releases
+  api_key:
+    secure: TsQP4N5Z+OfYF7ras7CNNyaTk69Tuy2cmAIZ8HNow66qmZ4VsWWhzoW2JKWnrwQuBlFpgVQUurzPFc0+oUBcI9SKDBMEtrjKFF4NuiXQmEdI4EWvIVutNQwuFuXdDPpEwEDhn4DM/TzmOE2ixqvEDqvfVh6nD0x8RB1rHXNu0o1Kf3sf58jgFkzK7W4+wyfe0mbwftTiVpSFmwA0TKZdEvolZbPp9zHM9f8dmGq/YHh+70SS0oNR8hHvBazQQa1KpZVkM4+MXyOEWmAH0RWS+76aG4IgMtdtXtroqlEe6o0GUx/jI2zONevcO47VJxUAThErTliQu6o1pMmJs+HAqYmZWHB/ihEMcfm8ILDLm2b7WAyLVr4zIjneAQtVUa9MGF72OFhJJz+/lcXxHg4ls8aFpsfewMv1hq4dpeW6eM1INt8Qrfjw4PmXlu5nwUfKQf0TkahXTk3LrFEMont/REDNwz/VrsFj3+ReWz/pYG+6QmqutoTgr4sLceO1LrVMSu/hv3peA52X1JuHc7WtU0+xc8ujvBrUgEQS5UGwmfVwzqbjXRJ5ZSM15dg0JvPYfNqoNxlxJs82iXSkISlq2dumBVBFy88R+zu6n0IJ7PdwQONhqnL54FYHTj7+o0pc1o7JkfhHRSyAJy2BapemM0Jxz8jfBIV4zy3+MLzVdG0=
+  file: electron-builds/*.tar.gz
+  on:
+    repo: rusty120/testapp
