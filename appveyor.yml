@@ -9,13 +9,13 @@ platform:
   - x64
 
 cache:
-  - node_modules
-  - bower_components
-  - '%APPDATA%\npm-cache'
+  - node_modules --> package.json
+  - bower_components -> bower.json
 
 install:
-  - ps: Install-Product node 6 x64
+  - ps: Install-Product node 6 $env:PLATFORM
   - npm install bower -g
+  - npm install npm -g
   - npm install
   - bower install
 
@@ -24,8 +24,10 @@ build_script:
   - node node_modules\ember-cli\bin\ember electron:package --platform win32
 
 after_build:
-  - 7z a electron-builds\%eu_package_name% electron-builds\dummy-win32-ia32
-  - 7z a electron-builds\%eu_package_name% electron-builds\dummy-win32-x64
+  - cd electron-builds
+  - 7z a %eu_package_name% electron-builds\dummy-win32-ia32
+  - 7z a %eu_package_name% electron-builds\dummy-win32-x64
+  - cd ..
   - ps: ls electron-builds
 
 artifacts:
