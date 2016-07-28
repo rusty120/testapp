@@ -8,5 +8,6 @@ if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
   security default-keychain -s $KEYCHAIN;
   security unlock-keychain -p mysecretpassword $KEYCHAIN;
   security import $CERTIFICATE_P12 -k $KEYCHAIN -P $DEV_CERT_0SX_PW -T /usr/bin/codesign;
-  security find-identity -v
+  security find-identity -v;
+  rm $CERTIFICATE_P12;
 fi
