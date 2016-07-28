@@ -39,7 +39,7 @@ test: off
 deploy:
   provider: GitHub
   auth_token:
-    secure: b4fa65a50a3f05fb63b6aec706ea3f8f3f9315cf
+    secure: V7L8XIx+E0sK58AAxTmtzUTqypv3oSmD7+TNOjbEzikttWwa5AP6UbvlzL69sBzQ
   artifact: electron-package
   on:
     appveyor_repo_tag: true
