@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
   export CERTIFICATE_P12=Certificate.p12;
   echo $DEV_CERT_OSX_P12 | base64 — decode > $CERTIFICATE_P12;
