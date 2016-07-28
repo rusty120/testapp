@@ -15,6 +15,9 @@ before_install:
 install:
 - npm install
 - bower install
+- brew tap caskroom/cask
+- brew cask install java xquartz
+- brew install wine
 script:
 - export PATH="$PATH:node_modules/ember-cli/bin"
 - "./script/prep-osx-keychain.sh"
@@ -22,7 +25,7 @@ script:
 - ember --version
 - npm run test-main
 - ember electron:test
-- ember electron:package --platform darwin --arch x64
+- ember electron:package
 after_success:
 - tar -C electron-builds -czvf electron-builds/dummy-darwin-x64.tar.gz dummy-darwin-x64
 - ls -lah electron-builds
