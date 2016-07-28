@@ -15,6 +15,7 @@ before_install:
 install:
 - npm install
 - bower install
+- brew update
 - brew tap caskroom/cask
 - brew cask install java xquartz
 - brew install wine
