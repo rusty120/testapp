@@ -24,7 +24,7 @@ install:
 
 script:
   - export PATH="$PATH:node_modules/ember-cli/bin"
-  - script/prep-osx-keychain.sh
+  - './script/prep-osx-keychain.sh'
   - npm --version
   - ember --version
   - npm run test-main
